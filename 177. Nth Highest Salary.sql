@@ -90,7 +90,19 @@ RETURN(
               where E2.Salary > E.Salary
               )
 
-  
+#solution 4
+ 
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+RETURN(
+ select distinct salary
+ from (Select 
+       salary,
+       DENSE_RANK() OVER (order by salary desc) as rnk 
+       from Employee) a
+ where rnk = N
+);
+END
   
   
   
