@@ -50,6 +50,9 @@ Output:
 | null                   |
 +------------------------+
 */
+
+
+# solution 1
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
   declare m int;
