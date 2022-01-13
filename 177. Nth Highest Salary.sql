@@ -79,6 +79,17 @@ BEGIN
    End
 
 
+#solution 3
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+RETURN(
+ SELECT DISTINCT SALARY AS getNthHighestSalary
+ from Employee e
+ where N-1 = (Select
+              count(distinct salary) from Employee E2
+              where E2.Salary > E.Salary
+              )
+
   
   
   
