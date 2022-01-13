@@ -56,7 +56,7 @@ Output:
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
   declare m int;
-  set m = n-1;
+  set m = n-1; #N-1 is because we need to skip n-1 row to obtain nth highest salary
   RETURN (
       select distinct salary
       from employee 
