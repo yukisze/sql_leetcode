@@ -64,3 +64,23 @@ BEGIN
       limit M,1
   );
 END
+
+#solution 2
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+  set N = N-1;
+  return(
+   select distinct ifnull(salary,null)
+   from employee
+   order by salary desc
+   limit N,1
+   );
+   End
+
+# we cannot put N-1 in the return bracket, thats why I put set n = n-1 in the beginning
+  
+  
+  
+  
+  
