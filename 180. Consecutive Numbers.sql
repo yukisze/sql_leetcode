@@ -69,7 +69,16 @@ id	num	id	num	id	num
 
 -- using inner join we get
 id	num	id	num	id	num
-3	 1	  2	 1	   1	 1 
+3	 1	  2	 1	  1	 1 
+
+-- solution 2 using between 1 and 2
+
+select distinct(t1.num) from logs t1 
+join logs t2 on  t1.num = t2.num 
+where t2.id - t1.id between 1 and 2 --so the id will be having 1 and 2 difference
+group by t1.id and t1.num --group by so we can count(t2.id) to see if it is >= 2
+having count(t2.id) >=2;
+                            
 
 
 
