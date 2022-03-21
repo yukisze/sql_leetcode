@@ -16,5 +16,8 @@ If more than one Occupation has the same [occupation_count], they should be orde
 
 /* 1. name , first letter of occupation*/ 
 -- SUBSTR(string, start, length)
+-- LEFT(string, number_of_chars)
+
+
 
 2. count (occupation), lowercase occupation, order by count(occuparion), order by occupation desc
