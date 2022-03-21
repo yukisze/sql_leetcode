@@ -8,4 +8,4 @@
 ### Hackerrank
 | Quesiton | Concepts  |
 | ------------- | ------------- |
-| The PADS | CONCAT|
+| The PADS | CONCAT,left()|
