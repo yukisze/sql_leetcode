@@ -18,6 +18,15 @@ If more than one Occupation has the same [occupation_count], they should be orde
 -- SUBSTR(string, start, length)
 -- LEFT(string, number_of_chars)
 
+-- 1
+select concat(name, '(', substring(occupation, 1, 1), ')') 
+from occupations 
+order by name asc;
+-- 2
+select concat("There are total ", cast(count(*) as char), " ", lower(occupation), "s.") 
+from occupations 
+group by occupation 
+order by count(*) asc;
 
 
-2. count (occupation), lowercase occupation, order by count(occuparion), order by occupation desc
+
