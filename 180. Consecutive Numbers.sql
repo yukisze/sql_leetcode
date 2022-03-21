@@ -69,7 +69,7 @@ id	num	id	num	id	num
 
 -- using inner join we get
 id	num	id	num	id	num
-3	 1	   2	 1	   1	 1 
+3	 1	  2	 1	   1	 1 
 
 
 
