@@ -1,4 +1,5 @@
-# sql_leetcode
+# sql_practise
+### leetcode
 | No  |  Quesiton | Concepts  |
 | ------------- | ------------- |------------- |
 | 177. | [Nth Highest Salary](https://github.com/yukisze/sql_leetcode/blob/main/177.%20Nth%20Highest%20Salary.sql) |
