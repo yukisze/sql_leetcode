@@ -13,3 +13,7 @@ occupation name.
 If more than one Occupation has the same [occupation_count], they should be ordered alphabetically.
 
 */
+
+/* 1. name , first letter of occupation*/
+
+2. count (occupation), lowercase occupation, order by count(occuparion), order by occupation desc
