@@ -8,4 +8,4 @@
 ### Hackerrank
 | Quesiton | Concepts  |
 | ------------- | ------------- |
-| The PADS | CONCAT(),left()|
+| [The PADS](https://github.com/yukisze/sql_practise/blob/main/THE_PADS.sql) | CONCAT(),left()|
