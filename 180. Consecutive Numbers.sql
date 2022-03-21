@@ -55,15 +55,15 @@ left join logs L2
 WHERE L.ID IS NOT NULL AND L1.ID IS NOT NULL AND L2.ID IS NOT NULL;
 
 
-## self joining to create the following table
+## self left joining to create the following table
 id	num	id	num	id	num
 1	 1	  N	 N	  N	  N
 2	 1	  1	 1	  N	  N
 3	 1	  2	 1	  1	  1
-4	 2	  3	 1	  2	  1
-5	 1	  4	 2	  3	  1
-6	 2	  5	 1	  4	  2
-7	 2	  6	 2	  5	  1
+4	 2	  N	 N	  N	  N
+5	 1	  N	 N	  3	  1
+6	 2	  N	 N	  4	  2
+7	 2	  6	 2	  N	  N
 
 
 
