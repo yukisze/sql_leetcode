@@ -65,5 +65,11 @@ id	num	id	num	id	num
 6	 2	  N	 N	  4	  2
 7	 2	  6	 2	  N	  N
 
+-- this is why we need all L L1 L2 too be not null
+
+-- using inner join we get
+id	num	id	num	id	num
+3	 1	   2	 1	   1	 1 
+
 
 
