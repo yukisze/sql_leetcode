@@ -80,5 +80,11 @@ group by t1.id and t1.num --group by so we can count(t2.id) to see if it is >= 2
 having count(t2.id) >=2;
                             
 
-
+id	num	id	num
+1	 1	  2  	1
+2	 1	  3	  1
+1	 1	  3	  1
+3	 1	  5	  1
+4	 2	  6	  2
+6	 2	  7   2
 
