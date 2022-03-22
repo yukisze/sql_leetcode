@@ -50,26 +50,71 @@ On 2019-07-02, user 2 purchased using mobile only, user 3 purchased using deskto
 --solution 1
 -- using if(condition, value_if_true, value_if_false) to get 'both'
 /*
-# user_id	spend_date	platform	amount
-1	2019-07-01	both	200
-2	2019-07-01	mobile	100
-2	2019-07-02	mobile	100
-3	2019-07-01	desktop	100
-3	2019-07-02	desktop	100
-3	2019-07-03	desktop	100
+This is the table to count number of user_id on the same spend_date, so if ct = 2, then we get both
 
++---------+------------+----+----------+--------+
+| user_id | spend_date | ct | platform | amount |
++---------+------------+----+----------+--------+
+|       1 | 2019-07-01 |  2 | mobile   |    200 |
+|       2 | 2019-07-01 |  1 | mobile   |    100 |
+|       2 | 2019-07-02 |  1 | mobile   |    100 |
+|       3 | 2019-07-01 |  1 | desktop  |    100 |
+|       3 | 2019-07-02 |  1 | desktop  |    100 |
+|       3 | 2019-07-03 |  1 | desktop  |    100 |
+|       4 | 2019-07-03 |  1 | desktop  |    100 |
+|       5 | 2019-07-03 |  1 | desktop  |    100 |
+|       6 | 2019-07-03 |  1 | desktop  |    100 |
+|       7 | 2019-07-03 |  1 | desktop  |    100 |
++---------+------------+----+----------+--------+
+
++---------+------------+----------+--------+
+| user_id | spend_date | platform | amount |
++---------+------------+----------+--------+
+|       1 | 2019-07-01 | both     |    200 |
+|       2 | 2019-07-01 | mobile   |    100 |
+|       2 | 2019-07-02 | mobile   |    100 |
+|       3 | 2019-07-01 | desktop  |    100 |
+|       3 | 2019-07-02 | desktop  |    100 |
+|       3 | 2019-07-03 | desktop  |    100 |
+|       4 | 2019-07-03 | desktop  |    100 |
+|       5 | 2019-07-03 | desktop  |    100 |
+|       6 | 2019-07-03 | desktop  |    100 |
+|       7 | 2019-07-03 | desktop  |    100 |
++---------+------------+----------+--------+
 */
--- then create a table to perform right join
+-- then create a table to perform right join, so that we can obtain null value
 /* # spend_date	platform
-2019-07-01	desktop
-2019-07-02	desktop
-2019-07-03	desktop
-2019-07-01	mobile
-2019-07-02	mobile
-2019-07-03	mobile
-2019-07-01	both
-2019-07-02	both
-2019-07-03	both
++------------+----------+
+| spend_date | platform |
++------------+----------+
+| 2019-07-01 | desktop  |
+| 2019-07-02 | desktop  |
+| 2019-07-03 | desktop  |
+| 2019-07-01 | mobile   |
+| 2019-07-02 | mobile   |
+| 2019-07-03 | mobile   |
+| 2019-07-01 | both     |
+| 2019-07-02 | both     |
+| 2019-07-03 | both     |
++------------+----------+
 */
-
+select dt.spend_date,dt.platform,coalesce(sum(total_amount),0) as total_amount,count(user_id) as total_users
+from
+(select user_id, spend_date, if(ct = 2, "both", platform) as platform, total_amount
+    from
+        (select user_id, spend_date, count(user_id) as ct, platform, sum(amount) as total_amount
+        from spending
+        group by user_id, spend_date
+        ) a
+    )b
+right join 
+    (select distinct(spend_date), 'desktop' platform from Spending
+    union
+    select distinct(spend_date), 'mobile' platform from Spending
+    union
+    select distinct(spend_date), 'both' platform from Spending
+    ) dt
+on b.spend_date = dt.spend_date and b.platform = dt.platform
+group by dt.spend_date, dt.platform;
+ 
     
