@@ -49,5 +49,27 @@ On 2019-07-02, user 2 purchased using mobile only, user 3 purchased using deskto
 
 --solution 1
 -- using if(condition, value_if_true, value_if_false) to get 'both'
+/*
+# user_id	spend_date	platform	amount
+1	2019-07-01	both	200
+2	2019-07-01	mobile	100
+2	2019-07-02	mobile	100
+3	2019-07-01	desktop	100
+3	2019-07-02	desktop	100
+3	2019-07-03	desktop	100
+
+*/
+-- then create a table to perform right join
+/* # spend_date	platform
+2019-07-01	desktop
+2019-07-02	desktop
+2019-07-03	desktop
+2019-07-01	mobile
+2019-07-02	mobile
+2019-07-03	mobile
+2019-07-01	both
+2019-07-02	both
+2019-07-03	both
+*/
 
     
