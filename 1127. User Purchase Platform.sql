@@ -46,3 +46,8 @@ Explanation:
 On 2019-07-01, user 1 purchased using both desktop and mobile, user 2 purchased using mobile only and user 3 purchased using desktop only.
 On 2019-07-02, user 2 purchased using mobile only, user 3 purchased using desktop only and no one purchased using both platforms.
 */
+
+--solution 1
+-- using if(condition, value_if_true, value_if_false) to get 'both'
+
+    
